@@ -7,6 +7,12 @@
 # (name mangling = _nomedaclasse__atributo) e se comporta como um atributo normal, podendo ser usado em outras classes.
 # Lembrando que o underscore único ainda indica que esse atributo é 'privado'.
 
+# OBS.: A classe-mãe é chamada de superclasse.
+
+# Para não precisar inicializar atributos iguais em cada classe herdeira, pode-se utlilizar o comando
+# 'super().__init__(<parâmetros comuns entre superclasse e classe herdeira>)' para aproveitar os atributos em comum dos
+# objetos da classe alvo.
+
 class Programa:
     def __init__(self, nome, ano):
         self._nome = nome.title()
@@ -30,14 +36,10 @@ class Programa:
 
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
-        self._nome = nome.title()
-        self.ano = ano
+        super().__init__(nome, ano)
         self.duracao = duracao
-        self._likes = 0
 
 class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
-        self._nome = nome.title()
-        self.ano = ano
+        super().__init__(nome, ano)
         self.temporadas = temporadas
-        self._likes = 0
