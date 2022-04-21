@@ -5,13 +5,14 @@
 # Atributos e métodos privados não são herdados pela classe filha. Para resolver o problema de acessar esses atributos
 # nas classes herdeiras, convencionou-se o uso de apenas um underscore. Assim, o atributo não sofre o name mangling
 # (name mangling = _nomedaclasse__atributo) e se comporta como um atributo normal, podendo ser usado em outras classes.
-# Lembrando que o underscore único ainda indica que esse atributo é 'privado'.
+# Lembrando que o underscore único ainda indica que esse atributo deve ser considerado como 'privado'.
 
-# OBS.: A classe-mãe é chamada de superclasse.
+# OBS.: A classe-mãe é chamada também de superclasse.
 
 # Para não precisar inicializar atributos iguais em cada classe herdeira, pode-se utlilizar o comando
 # 'super().__init__(<parâmetros comuns entre superclasse e classe herdeira>)' para aproveitar os atributos em comum dos
 # objetos da classe alvo.
+# O método 'super()' pode chamar qualquer método ou atributo da classe mãe.
 
 class Programa:
     def __init__(self, nome, ano):
