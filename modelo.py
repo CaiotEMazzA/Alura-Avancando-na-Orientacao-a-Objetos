@@ -14,6 +14,30 @@
 # objetos da classe alvo.
 # O método 'super()' pode chamar qualquer método ou atributo da classe mãe.
 
+# Assim como temos atributos ligados diretamente às classes, também temos métodos. As duas formas de criar tais métodos
+# são:
+#
+# - Métodos de classe, utilizando o decorator '@classmethod'. Quando criamos um método de classe, temos acesso aos
+# atributos da classe. Assim como podemos acessar os atributos de classe por meio dos atributos de instâncias, podemos
+# acessar os métodos de classe por meio dos métodos de instância. Exemplo:
+#######################################################################################################################
+# class Funcionario:
+#     prefixo = 'Instrutor'
+#
+#     @classmethod
+#     def info(cls):
+#         return f'Esse é um {cls.prefixo}'
+#######################################################################################################################
+#
+# - Métodos estáticos, utilizando o decorator @staticmethod. Nesse caso, não é possível acessar as informações da
+# classe, porém o método estático é acessível a partir da classe e também da instância. Exemplo:
+#######################################################################################################################
+# class FolhaDePagamento:
+#     @staticmethod
+#     def log():
+#         return f'Isso é um log qualquer'
+#######################################################################################################################
+
 class Programa:
     def __init__(self, nome, ano):
         self._nome = nome.title()
