@@ -86,13 +86,30 @@ class Serie(Programa):
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes} likes'
 
+class Playlist:
+    def __init__(self, nome, programas):
+        self.nome = nome
+        self.programas = programas
+
+    def tamanho(self):
+        return len(self.programas)
+
 procurando_nemo = Filme('Procurando nemo', 2003, 100)
-procurando_nemo.dar_like()
 mandaloriano = Serie('O Mandaloriano', 2019, 2)
+tmep = Filme('Todo mundo em pânico', 1999, 120)
+demolidor = Serie('Demolidor', 2016, 4)
+
+procurando_nemo.dar_like()
+tmep.dar_like()
+tmep.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
 mandaloriano.dar_like()
 mandaloriano.dar_like()
 
-filmes_e_series = [procurando_nemo, mandaloriano]
+filmes_e_series = [procurando_nemo, mandaloriano, demolidor, tmep]
+minha_playlist = Playlist('Fim de Semana', filmes_e_series)
 
-for programa in filmes_e_series:
+for programa in minha_playlist.programas:
     print(programa)
