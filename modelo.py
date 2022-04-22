@@ -38,6 +38,14 @@
 #         return f'Isso é um log qualquer'
 #######################################################################################################################
 
+# Classes filhas são do mesmo tipo que a classe mãe. Isso significa, no exemplo deste código, que o Filme É UM
+# Programa, que a Série É UM Programa, mas o Filme NÃO É UMA Série e vice versa. Tendo a classe mãe em comum, podemos
+# fazer, por exemplo, um loop em uma lista com objetos de diferentes classes filhas de uma mesma classe mãe pedindo
+# para imprimir os atributos relativos à classe mãe.
+
+# O python tem uma função que retorna um booleano indicando se um objeto tem um certo tipo de atributo. Essa função é a
+# 'hasattr(<objeto>, <atributo procurado>)'.
+
 class Programa:
     def __init__(self, nome, ano):
         self._nome = nome.title()
@@ -68,3 +76,18 @@ class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
         self.temporadas = temporadas
+
+
+procurando_nemo = Filme('Procurando nemo', 2003, 100)
+procurando_nemo.dar_like()
+print(f'{procurando_nemo.nome} - {procurando_nemo.duracao} - {procurando_nemo.likes}')
+mandaloriano = Serie('O Mandaloriano', 2019, 2)
+mandaloriano.dar_like()
+mandaloriano.dar_like()
+print(f'{mandaloriano.nome} - {mandaloriano.temporadas} - {mandaloriano.likes}')
+
+filmes_e_series = [procurando_nemo, mandaloriano]
+
+for programa in filmes_e_series:
+    detalhes = programa.duracao if hasattr(programa, 'duracao') else programa.temporadas
+    print(f'{programa.nome} - {detalhes} - {programa.likes}')
