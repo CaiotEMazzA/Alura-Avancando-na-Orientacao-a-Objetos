@@ -67,27 +67,32 @@ class Programa:
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
 
+    def imprime(self):
+        print(f'{self._nome} - {self.ano} - {self._likes}')
+
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
         self.duracao = duracao
+
+    def imprime(self):
+        print(f'{self._nome} - {self.ano} - {self.duracao} min - {self._likes} likes')
 
 class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
+    def imprime(self):
+        print(f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes} likes')
 
 procurando_nemo = Filme('Procurando nemo', 2003, 100)
 procurando_nemo.dar_like()
-print(f'{procurando_nemo.nome} - {procurando_nemo.duracao} - {procurando_nemo.likes}')
 mandaloriano = Serie('O Mandaloriano', 2019, 2)
 mandaloriano.dar_like()
 mandaloriano.dar_like()
-print(f'{mandaloriano.nome} - {mandaloriano.temporadas} - {mandaloriano.likes}')
 
 filmes_e_series = [procurando_nemo, mandaloriano]
 
 for programa in filmes_e_series:
-    detalhes = programa.duracao if hasattr(programa, 'duracao') else programa.temporadas
-    print(f'{programa.nome} - {detalhes} - {programa.likes}')
+    programa.imprime()
