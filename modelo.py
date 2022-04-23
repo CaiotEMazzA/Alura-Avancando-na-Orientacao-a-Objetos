@@ -105,8 +105,7 @@ class Playlist:
     def listagem(self):
         return self._programas
 
-    @property
-    def tamanho(self):
+    def __len__(self):
         return len(self._programas)
 
 
@@ -127,7 +126,7 @@ mandaloriano.dar_like()
 filmes_e_series = [procurando_nemo, mandaloriano, demolidor, tmep]
 minha_playlist = Playlist('Fim de Semana', filmes_e_series)
 
-print(f'Tamanho da playlist: {len(minha_playlist.listagem)} programas.')
+print(f'Tamanho da playlist: {len(minha_playlist)} programas.')
 
 for programa in minha_playlist:
     print(programa)
