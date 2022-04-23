@@ -86,10 +86,18 @@ class Serie(Programa):
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes} likes'
 
-class Playlist(list):
+class Playlist:
     def __init__(self, nome, programas):
         self.nome = nome
-        super().__init__(programas)
+        self._programas = programas
+    
+    @property
+    def listagem(self):
+        return self._programas
+
+    @property
+    def tamanho(self):
+        return len(self._programas)
 
 
 procurando_nemo = Filme('Procurando nemo', 2003, 100)
@@ -109,9 +117,9 @@ mandaloriano.dar_like()
 filmes_e_series = [procurando_nemo, mandaloriano, demolidor, tmep]
 minha_playlist = Playlist('Fim de Semana', filmes_e_series)
 
-print(f'Tamanho da playlist: {len(minha_playlist)} programas.')
+print(f'Tamanho da playlist: {minha_playlist.tamanho} programas.')
 
-for programa in minha_playlist:
+for programa in minha_playlist.listagem:
     print(programa)
 
-print(f'Tá ou não tá? {demolidor in minha_playlist}')
+print(f'Tá ou não tá? {demolidor in minha_playlist.listagem}')
