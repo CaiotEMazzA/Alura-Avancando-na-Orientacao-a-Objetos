@@ -53,7 +53,9 @@
 
 # O método dunder '__getitem__' pode fazer com que um objeto se torne iterável mesmo sem herdar da classe 'list'.
 
-class Programa:
+from abc import ABCMeta, abstractmethod
+
+class Programa(metaclass = ABCMeta):
     def __init__(self, nome, ano):
         self._nome = nome.title()
         self.ano = ano
@@ -74,6 +76,7 @@ class Programa:
     def nome(self, novo_nome):
         self._nome = novo_nome.title()
 
+    @abstractmethod
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self._likes} likes'
 
