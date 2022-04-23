@@ -46,6 +46,13 @@
 # O python tem uma função que retorna um booleano indicando se um objeto tem um certo tipo de atributo. Essa função é a
 # 'hasattr(<objeto>, <atributo procurado>)'.
 
+# O conceito de Duck Typing diz que um objeto não precisa ser de um tipo para usar comportamentos daquele tipo. Por
+# exemplo, se uma ave anda como pato, nada como pato e tem bico de pato, eu não preciso me preocupar se ela é um pato
+# ou não. Da mesma forma, o python não está interessado se um objeto é de determinado tipo. Desde que ele tenha os
+# mesmos comportamento que aquele tipo, o python executa tal comportamento.
+
+# O método dunder '__getitem__' pode fazer com que um objeto se torne iterável mesmo sem herdar da classe 'list'.
+
 class Programa:
     def __init__(self, nome, ano):
         self._nome = nome.title()
@@ -91,6 +98,9 @@ class Playlist:
         self.nome = nome
         self._programas = programas
     
+    def __getitem__(self, item):
+        return self._programas[item]
+
     @property
     def listagem(self):
         return self._programas
@@ -117,9 +127,9 @@ mandaloriano.dar_like()
 filmes_e_series = [procurando_nemo, mandaloriano, demolidor, tmep]
 minha_playlist = Playlist('Fim de Semana', filmes_e_series)
 
-print(f'Tamanho da playlist: {minha_playlist.tamanho} programas.')
+print(f'Tamanho da playlist: {len(minha_playlist.listagem)} programas.')
 
-for programa in minha_playlist.listagem:
+for programa in minha_playlist:
     print(programa)
 
-print(f'Tá ou não tá? {demolidor in minha_playlist.listagem}')
+print(f'Tá ou não tá? {demolidor in minha_playlist}')
